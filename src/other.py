@@ -2,7 +2,6 @@ import cv2, caffe
 import numpy as np
 from matplotlib import cm
 
-
 def prepare_img(im, mean):
     """
         transform img into caffe's input img.
@@ -11,7 +10,7 @@ def prepare_img(im, mean):
     return im_data
 
 
-def draw_boxes(im, bboxes, is_display=True, color=None, caption="Image", wait=True):
+def draw_boxes(im, bboxes,i, is_display=True, color=None, caption="Image", wait=True):
     """
         boxes: bounding boxes
     """
@@ -25,7 +24,9 @@ def draw_boxes(im, bboxes, is_display=True, color=None, caption="Image", wait=Tr
         else:
             c=color
         cv2.rectangle(im, tuple(box[:2]), tuple(box[2:4]), c)
+
     if is_display:
+        cv2.imwrite('output_images/output_{}.jpg'.format(i),im)
         cv2.imshow(caption, im)
         if wait:
             cv2.waitKey(0)

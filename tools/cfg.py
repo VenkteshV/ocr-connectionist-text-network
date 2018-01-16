@@ -5,7 +5,7 @@ import numpy as np
 class Config:
     MEAN=np.float32([102.9801, 115.9465, 122.7717])
     TEST_GPU_ID=0
-    SCALE=800
+    SCALE=750
     MAX_SCALE=1000
 
     LINE_MIN_SCORE=0.7
@@ -17,7 +17,7 @@ class Config:
     MIN_RATIO=1.2
     MIN_V_OVERLAPS=0.7
     MIN_SIZE_SIM=0.7
-    TEXT_PROPOSALS_WIDTH=20
+    TEXT_PROPOSALS_WIDTH=16
 
 def init():
     sys.path.insert(0, "./tools")

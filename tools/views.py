@@ -8,6 +8,7 @@ try:
 except:
     pass
 app.config['UPLOAD_FOLDER'] = '/document'
+# main route
 @app.route('/ocr', methods=['POST'])
 def index():
     if 'file' in request.files:

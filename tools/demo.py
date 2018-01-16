@@ -27,6 +27,7 @@ try:
 except:
     pass
 box_count = 0
+i = 0
 for im_name in demo_imnames:
     print ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print ("Image: %s"%im_name)
@@ -42,7 +43,8 @@ for im_name in demo_imnames:
     print ("Number of the detected text lines: %s"%len(text_lines))
     print ("Time: %f"%timer.toc())
 
-    im_with_text_lines=draw_boxes(im, text_lines, caption=im_name, wait=False)
+    im_with_text_lines=draw_boxes(im, text_lines,i, caption=im_name, wait=False)
+    i+=1
     for k in text_lines:
         top,left,bottom,right,score = k
         print score
