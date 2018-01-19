@@ -26,7 +26,7 @@ def draw_boxes(im, bboxes,i, is_display=True, color=None, caption="Image", wait=
         cv2.rectangle(im, tuple(box[:2]), tuple(box[2:4]), c)
 
     if is_display:
-        cv2.imwrite('output_images/output_{}.jpg'.format(i),im)
+        cv2.imwrite('output_images_parameter_width/output_{}.jpg'.format(i),im)
         cv2.imshow(caption, im)
         if wait:
             cv2.waitKey(0)

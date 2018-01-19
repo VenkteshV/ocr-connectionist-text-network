@@ -34,7 +34,7 @@ for im_name in demo_imnames:
 
     im_file=osp.join(DEMO_IMAGE_DIR, im_name)
     im=cv2.imread(im_file)
-
+    print ("shape",im.shape)
     timer.tic()
 
     im, f=resize_im(im, cfg.SCALE, cfg.MAX_SCALE)
@@ -46,6 +46,7 @@ for im_name in demo_imnames:
     im_with_text_lines=draw_boxes(im, text_lines,i, caption=im_name, wait=False)
     i+=1
     for k in text_lines:
+        print k
         top,left,bottom,right,score = k
         print score
         crop_img = im[int(left):int(right),int(top):int(bottom)]

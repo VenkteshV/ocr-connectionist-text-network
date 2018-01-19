@@ -12,8 +12,10 @@ def split_pdf(filename):
     # subprocess.call([cmd], shell=True)
     for im_name in demo_imnames:
         command = "unpaper -b 0.3 -mask-scan-maximum -mask-center -grayfilter-threshold -blurfilter -blackfilter-intensity -noisefilter --no-deskew --no-wipe -border -border-scan --no-border-align --overwrite -t ppm demo_images/%s demo_images/%s" % (im_name,im_name)
+        sharpening = "convert demo_images/%s -sharpen 0x5 -colorspace Gray demo_images/%s" % (im_name,im_name)
         os.system(command)
-    print (command)
+        os.system(sharpening)
+        print (command)
     return [f for f in glob.glob(os.path.join('demo_images', '%s*' % prefix))]
 
 def extract_pdf(filename):
