@@ -43,15 +43,15 @@ for im_name in demo_imnames:
     print ("Number of the detected text lines: %s"%len(text_lines))
     print ("Time: %f"%timer.toc())
 
-    im_with_text_lines=draw_boxes(im, text_lines,i, caption=im_name, wait=False)
+    im_with_text_lines,bboxes=draw_boxes(im, text_lines,i, caption=im_name, wait=False)
     i+=1
     for k in text_lines:
-        print k
         top,left,bottom,right,score = k
         print score
         crop_img = im[int(left):int(right),int(top):int(bottom)]
         cv2.imwrite('boxes/box_{}.jpg'.format(box_count),crop_img)
         box_count += 1
 print ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print bboxes
 print ("Thank you for trying our demo. Press any key to exit...")
 cv2.waitKey(0)

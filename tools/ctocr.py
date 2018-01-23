@@ -16,6 +16,7 @@ def split_pdf(filename):
         os.system(command)
         os.system(sharpening)
         print (command)
+        print(sharpening)
     return [f for f in glob.glob(os.path.join('demo_images', '%s*' % prefix))]
 
 def extract_pdf(filename):

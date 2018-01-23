@@ -15,7 +15,9 @@ def draw_boxes(im, bboxes,i, is_display=True, color=None, caption="Image", wait=
         boxes: bounding boxes
     """
     im=im.copy()
+    bbox_list = []
     for box in bboxes:
+
         if color==None:
             if len(box)==5 or len(box)==9:
                 c=tuple(cm.jet([box[-1]])[0, 2::-1]*255)
@@ -24,13 +26,16 @@ def draw_boxes(im, bboxes,i, is_display=True, color=None, caption="Image", wait=
         else:
             c=color
         cv2.rectangle(im, tuple(box[:2]), tuple(box[2:4]), c)
+        first_point = tuple(box[:2])
+        second_point = tuple(box[2:4])
+        bbox_list.append((first_point, second_point))
 
     if is_display:
-        cv2.imwrite('output_images_parameter_width/output_{}.jpg'.format(i),im)
+        cv2.imwrite('ouput_images_with_scale_1275/output_{}.jpg'.format(i),im)
         cv2.imshow(caption, im)
         if wait:
             cv2.waitKey(0)
-    return im
+    return im,bbox_list
 
 
 def threshold(coords, min_, max_):

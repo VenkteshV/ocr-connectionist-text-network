@@ -58,7 +58,7 @@ class TextDetector:
         if text_lines.shape[0]!=0:
             keep_inds=nms(text_lines, cfg.TEXT_LINE_NMS_THRESH)
             text_lines=text_lines[keep_inds]
-
+        text_lines=sorted(text_lines, key=lambda x:-float(x[1]), reverse=True)
         return text_lines
 
     def filter_boxes(self, boxes):
