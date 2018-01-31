@@ -5,7 +5,7 @@ import cv2, os, caffe, sys
 from detectors import TextProposalDetector, TextDetector
 import os.path as osp
 from utils.timer import Timer
-
+import re
 DEMO_IMAGE_DIR="demo_images/"
 NET_DEF_FILE="models/deploy.prototxt"
 MODEL_FILE="models/ctpn_trained_model.caffemodel"
@@ -28,6 +28,13 @@ except:
     pass
 box_count = 0
 i = 0
+def atoi(text):
+   return int(text) if text.isdigit() else text
+
+def natural_keys(text):
+   return [ atoi(c) for c in re.split('(\d+)', text) ]
+demo_imnames.sort(key = natural_keys)
+
 for im_name in demo_imnames:
     print ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print ("Image: %s"%im_name)
