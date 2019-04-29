@@ -3,7 +3,7 @@ The codes are used for implementing CTPN for scene text detection, described in:
 
     Z. Tian, W. Huang, T. He, P. He and Y. Qiao: Detecting Text in Natural Image with
     Connectionist Text Proposal Network, ECCV, 2016.
-
+This repo is a port of https://github.com/tianzhi0549/CTPN but wiht many modifications in scene detection by expanding the width of anchors  and also the resolution. The model is also exposed as a rest api using flask . Additionally we use a cleanup method using unpaper initially to clean the document for better detection
 
 It's also possible to run the program on CPU only, but it's extremely slow due to the non-optimal CPU implementation.
 # Required softwares
